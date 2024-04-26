@@ -1,0 +1,36 @@
+img {
+    height: 30rem;
+    width: 20rem;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.infoDiv {
+    color: #F5F5DC;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 20rem;
+}
+
+.miniInfoDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rating {
+    font-size:xx-large;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.name {
+font-size: large;
+font-weight: 500;
+}

@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 router.get('/:id', async (req, res) => {
+    console.log('Мама, я в ручке');
     try {
         const { id } = req.params
         const updId = parseInt(id)
@@ -12,7 +13,7 @@ router.get('/:id', async (req, res) => {
                 }
             })
         const result = await response.json()
-        res.status(200).json(result)
+        res.status(200).json(result.docs[0])
     } catch (error) {
         res.status(500).json({ err: 'Ошибка в movieRouter' })
     }
