@@ -1,0 +1,30 @@
+.bigDiv {
+display: grid;
+grid-template-columns: 2fr 1fr;
+}
+
+.description {
+    font-size: larger;
+    margin-bottom: 1rem;
+}
+
+.mainDiv {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: black;
+}
+
+.posterDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    margin-bottom: 1rem;
+}
+
+.backButton {
+    width: 5rem;
+    height: 2rem;
+}

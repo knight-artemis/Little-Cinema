@@ -48,29 +48,44 @@ export default function FilmPage() {
   }, []);
 
   return (
-    <>
-      <button onClick={() => navigate(-1)}>Назад</button>
+    <div className={style.mainDiv}>
+      <button className={style.backButton} onClick={() => navigate(-1)}>
+        Назад
+      </button>
       <h1>
         {/* {filmInfo.name} */}
         Большой Лебовски
       </h1>
-      <div className={style.infoDiv}>
-        {/* {filmInfo.description} */}
-        Лос-Анджелес, 1991 год, война в Персидском заливе. Главный герой по
-        прозвищу Чувак считает себя совершенно счастливым человеком. Его жизнь
-        составляют игра в боулинг и выпивка. Но внезапно его счастье нарушается,
-        гангстеры по ошибке принимают его за миллионера-однофамильца, требуют
-        деньги, о которых он ничего не подозревает, и, ко всему прочему,
-        похищают жену миллионера, будучи уверенными, что «муж» выплатит за нее
-        любую сумму.
+      <div className={style.bigDiv}>
+        <div className={style.infoDiv}>
+          <div className={style.description}>
+            {/* {filmInfo.description} */}
+            Лос-Анджелес, 1991 год, война в Персидском заливе. Главный герой по
+            прозвищу Чувак считает себя совершенно счастливым человеком. Его
+            жизнь составляют игра в боулинг и выпивка. Но внезапно его счастье
+            нарушается, гангстеры по ошибке принимают его за
+            миллионера-однофамильца, требуют деньги, о которых он ничего не
+            подозревает, и, ко всему прочему, похищают жену миллионера, будучи
+            уверенными, что «муж» выплатит за нее любую сумму.
+          </div>
+          <div className={style.text}>
+            {/* Длительность: {filmInfo.movieLength} мин. */}
+            Длительность: 110 мин.
+          </div>
+          <div className={style.text}>
+            {/* Дата выхода: {filmInfo.premiere.world} */}
+            Дата выхода: 12.05.2000
+          </div>
+          <div className={style.text}>Жанр:{ }</div>
+        </div>
+        <div className={style.posterDiv}>
+          <img
+            // src={filmInfo.poster.url}
+            src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/orig"
+            alt=""
+          />
+        </div>
       </div>
-      <div className={style.posterDiv}>
-        <img
-          // src={filmInfo.poster.url}
-          src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/orig"
-          alt=""
-        />
-      </div>
-    </>
+    </div>
   );
 }
