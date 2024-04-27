@@ -1,10 +1,12 @@
 import { useLayoutEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { filmType } from "../../types";
 import axios from "axios";
 import style from "./FilmCard.module.scss";
 
 export default function FilmCard() {
   const initialState: filmType = {
+    id: 0,
     name: "",
     rating: {
       kp: 0,
@@ -42,8 +44,13 @@ export default function FilmCard() {
     getFilmInfo();
   }, []);
 
+  const navigate = useNavigate();
+
   return (
-    <div className={style.mainDiv}>
+    <div
+      className={style.mainDiv}
+      onClick={() => navigate(`/movie/555}`)}
+    >
       <img
         // src={filmInfo.poster.previewUrl}
         src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/x1000"

@@ -1,12 +1,18 @@
 import "./App.scss";
-import FilmsBlock from "./components/FilmsBlock/FilmsBlock";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
+import FilmPage from "./pages/FilmPage/FilmPage";
+import ListPage from "./pages/ListPage/ListPage";
 
 function App() {
   return (
     <>
       <Header />
-      <FilmsBlock />
+      <Routes>
+        <Route path="/movie/:id" element={<FilmPage />} />
+        <Route path="/listPage/:id" element={<ListPage />} />
+        <Route path="/" element={<ListPage />} />
+      </Routes>
     </>
   );
 }

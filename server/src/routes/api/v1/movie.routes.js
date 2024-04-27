@@ -5,7 +5,7 @@ router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params
         const updId = parseInt(id)
-        const response = await fetch(`https://api.kinopoisk.dev/v1.4/movie?selectFields=name&selectFields=poster&selectFields=year&selectFields=rating&selectFields=description&selectFields=movieLength&selectFields=premiere&selectFields=genres&id=${updId}`,
+        const response = await fetch(`https://api.kinopoisk.dev/v1.4/movie?selectFields=name&selectFields=poster&selectFields=year&selectFields=rating&selectFields=description&selectFields=movieLength&selectFields=premiere&selectFields=genres&selectFields=id&id=${updId}`,
             {
                 headers: {
                     'accept': 'application/json',

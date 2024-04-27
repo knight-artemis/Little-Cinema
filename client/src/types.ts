@@ -7,6 +7,7 @@ type ratingType = {
 }
 
 export type filmType = {
+    id: number,
     name: string,
     rating: ratingType,
     description: string,
