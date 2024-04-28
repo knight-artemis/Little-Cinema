@@ -9,7 +9,7 @@ router.get('/:id', async (req, res) => {
             {
                 headers: {
                     'accept': 'application/json',
-                    'X-API-KEY': '2BY14MR-YAQ49DR-HZNX7T0-J73CEEE'
+                    'X-API-KEY': '6TNPP65-9424ARE-PSJRDF8-S3FEVA5'
                 }
             })
         const result = await response.json()

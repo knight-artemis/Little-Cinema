@@ -4,7 +4,7 @@ import { filmType } from "../../types";
 import axios from "axios";
 import style from "./FilmCard.module.scss";
 
-export default function FilmCard() {
+export default function FilmCard({ id }: { id: number }) {
   const initialState: filmType = {
     id: 0,
     name: "",
@@ -27,7 +27,6 @@ export default function FilmCard() {
 
   useLayoutEffect(() => {
     const getFilmInfo = async (): Promise<void> => {
-      const id = 555;
       try {
         axios
           .get(`${import.meta.env.VITE_API}/movie/${id}`, {
@@ -37,38 +36,37 @@ export default function FilmCard() {
           .catch((err) =>
             console.log("Ошибка получения информации о фильме", err)
           );
+        console.log("Тут происходит запрос для FilmCard");
       } catch (error) {
         console.log(error);
       }
     };
     getFilmInfo();
-  }, []);
+  }, [id]);
 
   const navigate = useNavigate();
 
   return (
-    <div
-      className={style.mainDiv}
-      onClick={() => navigate(`/movie/555}`)}
-    >
+    <div className={style.mainDiv} onClick={() => navigate(`/movie/555}`)}>
       <img
-        // src={filmInfo.poster.previewUrl}
-        src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/x1000"
+        className={style.cardImg}
+        src={filmInfo.poster.url}
+        // src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/x1000"
         alt=""
       />
       <div className={style.infoDiv}>
         <div className={style.rating}>
-          {/* {filmInfo.rating.kp} */}
-          8.4
+          {filmInfo.rating.kp.toFixed(1)}
+          {/* 8.4 */}
         </div>
         <div className={style.miniInfoDiv}>
           <span className={style.name}>
-            {/* {filmInfo.name} */}
-            Большой Лебовски
+            {filmInfo.name}
+            {/* Большой Лебовски */}
           </span>
           <span className={style.year}>
-            {/* {filmInfo.year} */}
-            1994
+            {filmInfo.year}
+            {/* 1994 */}
           </span>
         </div>
       </div>

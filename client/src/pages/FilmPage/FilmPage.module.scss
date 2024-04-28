@@ -1,18 +1,29 @@
-.bigDiv {
-display: grid;
-grid-template-columns: 2fr 1fr;
-}
-
 .description {
     font-size: larger;
     margin-bottom: 1rem;
+    text-align: justify;
 }
 
 .mainDiv {
     padding-left: 1rem;
     padding-right: 1rem;
     color: black;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    cursor: default;
 }
+
+.pageImg {
+    height: 35rem;
+    width: 23.3rem;
+}
+
+.posterDiv {
+// grid-area: 'poster';
+grid-row: span 2
+}
+
 
 .posterDiv {
     display: flex;

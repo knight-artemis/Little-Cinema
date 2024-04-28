@@ -7,16 +7,16 @@ import { useParams } from "react-router-dom";
 
 export default function ListPage() {
   const { id } = useParams();
-  const updId = parseInt(id ?? "0");
+  const updId = parseInt(id ?? "1");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    console.log(id, "Я id");
+  }, [id]);
 
   return (
     <>
       <Navigation number={5} id={updId} />
-      <FilmsBlock />
+      <FilmsBlock id={updId} />
       <ScrollToTop smooth />
     </>
   );
