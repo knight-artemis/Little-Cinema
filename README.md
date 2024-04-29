@@ -26,7 +26,7 @@
 
 ```
 npm install
-``
+```
 
 2. Создайте файлы .env в папках client и server и заполните на основании .env_example.
 
