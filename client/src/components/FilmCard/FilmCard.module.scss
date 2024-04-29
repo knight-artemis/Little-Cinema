@@ -18,6 +18,7 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         width: 20rem;
+        margin-top: 0.5rem;
 
         .miniInfoDiv{
             display: flex;
@@ -31,14 +32,15 @@
             display: flex;
             align-items: center;
         }
+        
+        .name {
+        font-size: large;
+        font-weight: 500;
+        }
     }
 
 
     
-    .name {
-    font-size: large;
-    font-weight: 500;
-    }
 }
 
 

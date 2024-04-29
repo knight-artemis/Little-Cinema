@@ -1,20 +1,31 @@
-type ratingType = {
-    kp: number,
-    imdb: number,
-    filmCritics: number,
-    russianFilmCritics: number,
-    await: null
+type genType = {
+    id: number,
+    genre: string
+}
+
+type keywordsType = {
+    id: string,
+    keywords: string
 }
 
 export type filmType = {
-    id: number,
-    name: string,
-    rating: ratingType,
-    description: string,
-    premiere: { world: string },
+    imdb_id: string,
+    title: string,
     year: number,
-    poster: { url: string, previewUrl: string },
-    genres: { name: string }[],
-    movieLength: number
+    popularity: number,
+    description: string,
+    content_rating: string,
+    movie_length: number,
+    rating: number,
+    created_at: string,
+    trailer: string,
+    image_url: string,
+    release: string,
+    plot: string,
+    banner: string,
+    type: string,
+    more_like_this: {},
+    gen: genType[],
+    keywords: keywordsType[]
 }
 

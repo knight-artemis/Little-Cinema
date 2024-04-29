@@ -4,23 +4,26 @@ import { filmType } from "../../types";
 import axios from "axios";
 import style from "./FilmCard.module.scss";
 
-export default function FilmCard({ id }: { id: number }) {
+export default function FilmCard({ id }: { id: string }) {
   const initialState: filmType = {
-    id: 0,
-    name: "",
-    rating: {
-      kp: 0,
-      imdb: 0,
-      filmCritics: 0,
-      russianFilmCritics: 0,
-      await: null,
-    },
-    description: "",
-    premiere: { world: "" },
+    imdb_id: "",
+    title: "",
     year: 0,
-    poster: { url: "", previewUrl: "" },
-    genres: [{ name: "" }],
-    movieLength: 0,
+    popularity: 0,
+    description: "",
+    content_rating: "",
+    movie_length: 0,
+    rating: 0,
+    created_at: "",
+    trailer: "",
+    image_url: "",
+    release: "",
+    plot: "",
+    banner: "",
+    type: "",
+    more_like_this: {},
+    gen: [],
+    keywords: [],
   };
 
   const [filmInfo, setFilmInfo] = useState<filmType>(initialState);
@@ -47,21 +50,21 @@ export default function FilmCard({ id }: { id: number }) {
   const navigate = useNavigate();
 
   return (
-    <div className={style.mainDiv} onClick={() => navigate(`/movie/555}`)}>
+    <div className={style.mainDiv} onClick={() => navigate(`/movie/${id}}`)}>
       <img
         className={style.cardImg}
-        src={filmInfo.poster.url}
-        // src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/x1000"
+        src={filmInfo.banner}
+        // src="https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg"
         alt=""
       />
       <div className={style.infoDiv}>
         <div className={style.rating}>
-          {filmInfo.rating.kp.toFixed(1)}
+          {filmInfo.rating}
           {/* 8.4 */}
         </div>
         <div className={style.miniInfoDiv}>
           <span className={style.name}>
-            {filmInfo.name}
+            {filmInfo.title}
             {/* Большой Лебовски */}
           </span>
           <span className={style.year}>

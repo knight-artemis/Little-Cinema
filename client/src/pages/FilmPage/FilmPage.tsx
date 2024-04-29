@@ -6,24 +6,28 @@ import style from "./FilmPage.module.scss";
 
 export default function FilmPage() {
   const { id } = useParams();
+  const updId = id?.slice(0, -1);
   const navigate = useNavigate();
 
   const initialState: filmType = {
-    id: 0,
-    name: "",
-    rating: {
-      kp: 0,
-      imdb: 0,
-      filmCritics: 0,
-      russianFilmCritics: 0,
-      await: null,
-    },
-    description: "",
-    premiere: { world: "" },
+    imdb_id: "",
+    title: "",
     year: 0,
-    poster: { url: "", previewUrl: "" },
-    genres: [{ name: "" }],
-    movieLength: 0,
+    popularity: 0,
+    description: "",
+    content_rating: "",
+    movie_length: 0,
+    rating: 0,
+    created_at: "",
+    trailer: "",
+    image_url: "",
+    release: "",
+    plot: "",
+    banner: "",
+    type: "",
+    more_like_this: {},
+    gen: [],
+    keywords: [],
   };
 
   const [filmInfo, setFilmInfo] = useState<filmType>(initialState);
@@ -33,25 +37,25 @@ export default function FilmPage() {
     const getFilmInfo = async (): Promise<void> => {
       try {
         axios
-          .get(`${import.meta.env.VITE_API}/movie/${id}`, {
+          .get(`${import.meta.env.VITE_API}/movie/${updId}`, {
             withCredentials: true,
           })
           .then((res) => setFilmInfo(res.data))
           .catch((err) =>
             console.log("Ошибка получения информации о фильме", err)
           );
-
-        const premDate = filmInfo.premiere.world.slice(0, 10);
-        const updDate = premDate.split("-");
-        const finaldate = `${updDate[1]}.${updDate[2]}.${updDate[0]}`;
-        setDate(finaldate);
-        console.log('Тут происходит запрос для FilmPage');
       } catch (error) {
         console.log(error);
       }
     };
     getFilmInfo();
   }, []);
+
+  useLayoutEffect(() => {
+    const premDate = filmInfo.release.split("-");
+    const finaldate = `${premDate[2]}.${premDate[1]}.${premDate[0]}`;
+    setDate(finaldate);
+  }, [filmInfo]);
 
   return (
     <div className={style.mainDiv}>
@@ -60,14 +64,14 @@ export default function FilmPage() {
           Назад
         </button>
         <h1>
-          {filmInfo.name}
+          {filmInfo.title}
           {/* Большой Лебовски */}
         </h1>
       </div>
       <div className={style.posterDiv}>
         <img
           className={style.pageImg}
-          src={filmInfo.poster.url}
+          src={filmInfo.banner}
           // src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/orig"
           alt=""
         />
@@ -84,15 +88,15 @@ export default function FilmPage() {
           уверенными, что «муж» выплатит за нее любую сумму. */}
         </div>
         <div className={style.text}>
-          Длительность: {filmInfo.movieLength} мин.
+          Duration: {filmInfo.movie_length} min.
           {/* Длительность: 110 мин. */}
         </div>
         <div className={style.text}>
-          Дата выхода: {date}
+          Release date: {date}
           {/* Дата выхода: 12.05.2000 */}
         </div>
         <div className={style.text}>
-          Жанр: {filmInfo.genres.map((genre) => genre.name).join(", ")}
+          Genre: {filmInfo.gen.map((genre) => genre.genre).join(", ")}
           {`.`}
           {/* Жанр: комедия, криминал. */}
         </div>
