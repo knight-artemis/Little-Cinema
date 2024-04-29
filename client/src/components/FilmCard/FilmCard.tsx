@@ -39,7 +39,6 @@ export default function FilmCard({ id }: { id: string }) {
           .catch((err) =>
             console.log("Ошибка получения информации о фильме", err)
           );
-        console.log("Тут происходит запрос для FilmCard");
       } catch (error) {
         console.log(error);
       }
@@ -51,26 +50,12 @@ export default function FilmCard({ id }: { id: string }) {
 
   return (
     <div className={style.mainDiv} onClick={() => navigate(`/movie/${id}}`)}>
-      <img
-        className={style.cardImg}
-        src={filmInfo.banner}
-        // src="https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg"
-        alt=""
-      />
+      <img className={style.cardImg} src={filmInfo.banner} alt="" />
       <div className={style.infoDiv}>
-        <div className={style.rating}>
-          {filmInfo.rating}
-          {/* 8.4 */}
-        </div>
+        <div className={style.rating}>{filmInfo.rating}</div>
         <div className={style.miniInfoDiv}>
-          <span className={style.name}>
-            {filmInfo.title}
-            {/* Большой Лебовски */}
-          </span>
-          <span className={style.year}>
-            {filmInfo.year}
-            {/* 1994 */}
-          </span>
+          <span className={style.name}>{filmInfo.title}</span>
+          <span className={style.year}>{filmInfo.year}</span>
         </div>
       </div>
     </div>

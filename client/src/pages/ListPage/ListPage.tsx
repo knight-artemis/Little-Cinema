@@ -3,6 +3,7 @@ import FilmsBlock from "../../components/FilmsBlock/FilmsBlock";
 import Navigation from "../../components/Navigation/Navigation";
 import ScrollToTop from "react-scroll-to-top";
 import { useParams } from "react-router-dom";
+import style from './ListPage.module.scss'
 
 export default function ListPage() {
   const { id } = useParams();
@@ -10,7 +11,9 @@ export default function ListPage() {
 
   return (
     <>
+      <div className={style.navDiv} >
       <Navigation number={5} id={updId} />
+      </div>
       <FilmsBlock id={updId} />
       <ScrollToTop smooth />
     </>

@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { filmType } from "../../types";
 import axios from "axios";
 import style from "./FilmPage.module.scss";
+import Modal from "../../components/Modal/Modal";
+import VideoCard from "../../components/VideoCard/VideoCard";
 
 export default function FilmPage() {
   const { id } = useParams();
@@ -31,6 +33,7 @@ export default function FilmPage() {
   };
 
   const [filmInfo, setFilmInfo] = useState<filmType>(initialState);
+  const [modalActive, setModalActive] = useState<boolean>(true);
   const [date, setDate] = useState<string>("");
 
   useLayoutEffect(() => {
@@ -58,49 +61,51 @@ export default function FilmPage() {
   }, [filmInfo]);
 
   return (
-    <div className={style.mainDiv}>
-      <div className={style.headerDiv}>
-        <button className={style.backButton} onClick={() => navigate(-1)}>
-          Назад
-        </button>
-        <h1>
-          {filmInfo.title}
-          {/* Большой Лебовски */}
-        </h1>
+    <>
+      <div className={style.mainDiv}>
+        <div className={style.headerDiv}>
+          <button className={style.backButton} onClick={() => navigate(-1)}>
+            Back
+          </button>
+          <h1>{filmInfo.title}</h1>
+        </div>
+        <div className={style.posterDiv}>
+          <img className={style.pageImg} src={filmInfo.banner} alt="" />
+        </div>
+        <div className={style.infoDiv}>
+          <div className={style.description}>{filmInfo.description}</div>
+          <div className={style.modalButtonDiv}>
+            <button
+              className={style.watchButton}
+              onClick={() => setModalActive((prev) => !prev)}
+            >
+              Watch trailer
+            </button>
+          </div>
+          <div className={style.miniInfoDiv}>
+            <div className={style.text}>
+              Duration: {filmInfo.movie_length} min.
+            </div>
+            <div className={style.text}>Release date: {date}</div>
+            <div className={style.text}>Popularity: {filmInfo.popularity}</div>
+            <div className={style.text}>
+              Age rating: {filmInfo.content_rating}
+            </div>
+            <div className={style.text}>
+              Genre: {filmInfo.gen.map((genre) => genre.genre).join(", ")}
+              {`.`}
+            </div>
+            <div className={style.text}>
+              Keywords:{" "}
+              {filmInfo.keywords.map((word) => word.keyword).join(", ")}
+              {`.`}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className={style.posterDiv}>
-        <img
-          className={style.pageImg}
-          src={filmInfo.banner}
-          // src="https://image.openmoviedb.com/kinopoisk-images/6201401/86be967f-598d-46f2-bc59-bc222e2ca837/orig"
-          alt=""
-        />
-      </div>
-      <div className={style.infoDiv}>
-        <div className={style.description}>
-          {filmInfo.description}
-          {/* Лос-Анджелес, 1991 год, война в Персидском заливе. Главный герой по
-          прозвищу Чувак считает себя совершенно счастливым человеком. Его жизнь
-          составляют игра в боулинг и выпивка. Но внезапно его счастье
-          нарушается, гангстеры по ошибке принимают его за
-          миллионера-однофамильца, требуют деньги, о которых он ничего не
-          подозревает, и, ко всему прочему, похищают жену миллионера, будучи
-          уверенными, что «муж» выплатит за нее любую сумму. */}
-        </div>
-        <div className={style.text}>
-          Duration: {filmInfo.movie_length} min.
-          {/* Длительность: 110 мин. */}
-        </div>
-        <div className={style.text}>
-          Release date: {date}
-          {/* Дата выхода: 12.05.2000 */}
-        </div>
-        <div className={style.text}>
-          Genre: {filmInfo.gen.map((genre) => genre.genre).join(", ")}
-          {`.`}
-          {/* Жанр: комедия, криминал. */}
-        </div>
-      </div>
-    </div>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <VideoCard link={filmInfo.trailer} />
+      </Modal>
+    </>
   );
 }

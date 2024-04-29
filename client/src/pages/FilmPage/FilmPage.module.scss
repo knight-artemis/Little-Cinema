@@ -1,8 +1,3 @@
-.description {
-    font-size: larger;
-    margin-bottom: 1rem;
-    text-align: justify;
-}
 
 .mainDiv {
     padding-left: 1rem;
@@ -12,30 +7,71 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 4fr;
     cursor: default;
+    font-size: larger;
+
+    @media screen and (max-width:1350px) {
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr 4fr;
+    }
+    
+    .posterDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-row: span 2;
+
+        @media screen and (max-width:1350px) {
+            margin-bottom: 3rem;
+        }
+
+        .pageImg {
+            height: 35rem;
+            width: 23.3rem;
+        }
+    }
+    .description {
+        text-align: justify;
+
+        @media screen and (max-width:750px) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+    
+    .modalButtonDiv {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .miniInfoDiv {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+    @media screen and (max-width:750px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    }
+
+        .text {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+    }
+
+    .backButton {
+        width: 5rem;
+        height: 2rem;
+    }
+
+    .watchButton {
+        width: 10rem;
+        height: 3rem;
+    }
 }
 
-.pageImg {
-    height: 35rem;
-    width: 23.3rem;
-}
-
-.posterDiv {
-// grid-area: 'poster';
-grid-row: span 2
-}
 
 
-.posterDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.text {
-    margin-bottom: 1rem;
-}
 
-.backButton {
-    width: 5rem;
-    height: 2rem;
-}

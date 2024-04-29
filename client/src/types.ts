@@ -5,7 +5,7 @@ type genType = {
 
 type keywordsType = {
     id: string,
-    keywords: string
+    keyword: string
 }
 
 export type filmType = {

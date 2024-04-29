@@ -3,15 +3,13 @@ require('@babel/register');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
 const morgan = require('morgan');
 const app = express()
 
 const movieRouter = require('./src/routes/api/v1/movie.routes')
 
 const {
-    PORT, CLIENT_PORT, SESSION_SECRET,
+    PORT, CLIENT_PORT,
 } = process.env;
 
 const corsOptions = {
@@ -20,19 +18,6 @@ const corsOptions = {
     credentials: true,
 };
 
-const sessionConfig = {
-    name: 'Cookie',
-    store: new FileStore(),
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 24 * 60 * 60 * 1000 * 10,
-        httpOnly: true,
-    },
-}
-
-app.use(session(sessionConfig))
 app.use(cors(corsOptions))
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))

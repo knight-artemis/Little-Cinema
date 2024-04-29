@@ -107,8 +107,8 @@ export default function FilmsBlock({ id }: { id: number }) {
 
   return (
     <div className={style.filmsBlock}>
-      {filmList.map((el) => (
-        <FilmCard id={el} />
+      {filmList.map((el, id) => (
+        <FilmCard id={el} key={id} />
       ))}
     </div>
   );

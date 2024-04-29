@@ -26,14 +26,12 @@ export default function Navigation({
   }, []);
   return (
     <div className={style.navigation}>
-      <button onClick={() => navigate(`/listPage/${pages[0]}`)}>
-        {`<<`}
-      </button>
+      <button onClick={() => navigate(`/listPage/${pages[0]}`)}>{`<<`}</button>
       <button onClick={() => navigate(`/listPage/${id > 1 ? id - 1 : number}`)}>
         {`<`}
       </button>
-      {pages.map((el) => (
-        <NavButton number={el} id={id} />
+      {pages.map((el, mapId) => (
+        <NavButton number={el} id={id} key={mapId} />
       ))}
       <button onClick={() => navigate(`/listPage/${id < number ? id + 1 : 1}`)}>
         {`>`}
