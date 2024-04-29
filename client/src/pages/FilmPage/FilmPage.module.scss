@@ -2,12 +2,12 @@
 .mainDiv {
     padding-left: 1rem;
     padding-right: 1rem;
-    color: black;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 4fr;
     cursor: default;
     font-size: larger;
+    color: #eae7DC;
 
     @media screen and (max-width:1350px) {
     grid-template-columns:1fr;

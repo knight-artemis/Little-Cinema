@@ -2,14 +2,14 @@ button {
     width: 2rem;
     height: 2rem;
     font-weight: 600;
-    border: 0.1rem solid #f58f29;
+    border: 0.1rem solid #ff00ff;
     border-radius: 10px;
-    background-color: #f58f29;
-    color: white;
+    background-color: #ff00ff;
+    color: #eae7DC;
     cursor: pointer;
 }
 
 .selectedButton {
-    background-color: #153040;
-    border: 0.1rem solid #153040;
+    background-color: #240090;
+    border: 0.1rem solid #240090;
 }
